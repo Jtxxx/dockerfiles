@@ -1,7 +1,7 @@
 # JDK
 FROM centos:centos7.6.1810
 MAINTAINER JTX
-
+RUN yum -y install wget
 ADD ./jdk1.8.0_211 /usr/local/jdk1.8.0_211/
 
 ENV JAVA_HOME /usr/local/jdk1.8.0_211
@@ -13,3 +13,7 @@ ADD apache-maven-3.6.1-bin.tar.gz /usr/local/opensource
 ENV MAVEN_HOME /usr/local/opensource/apache-maven-3.6.1
 ENV PATH $MAVEN_HOME/bin:$PATH
 
+#vertx
+RUN wget -O vert.x-2.1.2.tar.gz https://bintray.com/vertx/downloads/download_file?file_path=vert.x-2.1.2.tar.gz && tar -zxvf vert.x-2.1.2.tar.gz&&mv vert.x-2.1.2 /usr/local/opensource/vert.x-2.1.2&&rm -r vert.x-2.1.2.tar.gz
+ENV VERTX_HOME /usr/local/opensource/vert.x-2.1.2
+ENV PATH ${VERTX_HOME}/bin:$PATH
