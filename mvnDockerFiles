@@ -1,0 +1,4 @@
+FROM jtx/centos:jdk
+ADD apache-maven-3.6.1-bin.tar.gz /usr/local/opensource
+ENV MAVEN_HOME /usr/local/opensource/apache-maven-3.6.1
+ENV PATH $MAVEN_HOME/bin:$PATH
